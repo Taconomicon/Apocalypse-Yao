@@ -1,6 +1,7 @@
 body {
 	padding-top: 6px;
-	padding-left: 10px;
+	padding-left: 6px;
+	padding-right: 6px;
 	margin: 0;
 	font-family: Lucida Grande, Helvetica, Arial, sans-serif, Calibri Light;
 	font-size: 12px;
@@ -109,7 +110,7 @@ body {
 }
 
 .blue-fluid {
-	margin-right: -30px !important;
+	margin-right: -5px !important;
 }
 
 .form-control::-webkit-input-placeholder {
@@ -120,12 +121,11 @@ body {
 .postbar-search {
 	float: right;
 	width: 200px !important;
-	margin-right: 15px !important;
+	margin-right: -10px !important;
 	border-radius: 0px;
 	background-color: #507ea2 !important;
 	border-color: #507ea2 !important;
 	vertical-align: middle;
-	color: #ffffff;
 }
 
 .postbar-button:hover {
