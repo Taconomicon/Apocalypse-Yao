@@ -18,6 +18,8 @@
 	<title>Coup d'Hackers</title>
 </head>
 
+<body>
+
 <!--Navbar-->
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -27,7 +29,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <img class="navbar-brand" src="Resources/circle.png" />
+      <img class="navbar-brand" src="Resources/circle.png"/>
       <a class="navbar-brand" href="#">Coup d'Hackers</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
@@ -46,13 +48,40 @@
 
 <!--Posts-->
 <div class="postcontainer">
-  <div class="container">
-    <div class="well well-lg">
-      This is where posts are going to go.
+  <div class="navbar navbar-inverse postbar navbar-blue">
+    <div class="container-fluid blue-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#blueBar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="#" class="btn btn-primary btn-sm postbar-button" role="button">Create thread</a>
+      </div>
+      <div class="collapse navbar-collapse" id="blueBar">
+          <ul class="nav navbar-nav navbar-special postbar textbar">
+            <a href="#"><span class="glyphicon glyphicon-chevron-left"</a>
+            <a href="#"> 1 </a>
+            <a href="#"> 2 </a>
+            <a href="#"> 3 </a>
+            <a href="#"> 4 </a>
+            <a href="#"> 5 </a>
+            <a href="#"><span class="glyphicon glyphicon-chevron-right"</a>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <a href="#" class="btn btn-primary btn-sm postbar-search" role="button">Search</a>
+          </ul>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Thread list -->
+  <div class="row postbox">
+      <div class="threadbox">
+        This is where threads will go.
     </div>
   </div>
 </div>
-
-
 
 </body>
