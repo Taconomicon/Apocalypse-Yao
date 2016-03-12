@@ -18,7 +18,7 @@
 	<title>Coup d'Hackers</title>
 </head>
 
-<body>
+<body style="width: 1920px;">
 
 <!--Navbar-->
 <nav class="navbar navbar-inverse">
@@ -59,28 +59,55 @@
         <a href="#" class="btn btn-primary btn-sm postbar-button" role="button">Create thread</a>
       </div>
       <div class="collapse navbar-collapse" id="blueBar">
-          <ul class="nav navbar-nav navbar-special postbar textbar">
-            <a href="#"><span class="glyphicon glyphicon-chevron-left"</a>
-            <a href="#"> 1 </a>
-            <a href="#"> 2 </a>
-            <a href="#"> 3 </a>
-            <a href="#"> 4 </a>
-            <a href="#"> 5 </a>
-            <a href="#"><span class="glyphicon glyphicon-chevron-right"</a>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <a href="#" class="btn btn-primary btn-sm postbar-search" role="button">Search</a>
-          </ul>
-      </div>
+        <ul class="nav navbar-nav navbar-special postbar textbar">
+          <a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a>
+          <a href="#"> 1 </a>
+          <a href="#"> 2 </a>
+          <a href="#"> 3 </a>
+          <a href="#"> 4 </a>
+          <a href="#"> 5 </a>
+          <a href="#">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+        </ul>
+        <ul class="nav navbar-nav navbar-right selected-search">
+          <form id="search-input" class="input-group" action="search.js">
+            <input type="text" class="btn btn-primary btn-sm postbar-search" placeholder="Search" maxlength="28"></input>
+            <a><button type="submit" class="glyphicon glyphicon-search SearchIcon searchbuttonicon"> </button></a>
+          </form>
+        </ul> <!-- search button -->
+      </div> <!-- collapse bar -->
     </div>
-  </div>
-
 
 <!-- Thread list -->
-  <div class="row postbox">
+    <div class="row postbox">
       <div class="threadbox">
-        This is where threads will go.
+        <div class="threadtitle">
+          <a href="#">Post title is displayed here. It should not be longer than the whole page.</a>
+        </div>
+        <div class="threadinfo">
+          <a href="#">Original Post: User at Time, Date</a><br/>
+          <a href="#">Last Post: User at Time, Date</a>
+        </div>
+        <div class="tags">
+          <a href="#"><kbd>#test</kbd></a>
+          <a href="#"><kbd>#firstpost</kbd></a>
+          <a href="#"><kbd>#webdev</kbd></a>
+        </div>
+        <div class="avatar">
+            <img class="user-pic" src="resources/default-avatar.png"/>
+        </div>
+      </div> <!--threadbox -->
     </div>
+  </div>
+</div>
+
+<!-- Bottom Links -->
+<div class="links">
+  <div class="container">
+    <a>Home</a>
+    <a>Legal</a>
+    <a>About</a>
   </div>
 </div>
 
