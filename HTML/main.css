@@ -232,6 +232,7 @@ body {
 }
 
 kbd {
+	border-radius: 10px;
 	background-color: #3d3d3d;
 	font-family: inherit !important;
 	font-style: normal !important;
@@ -267,4 +268,36 @@ button:hover {
 
 .links {
 	text-align: center;
+}
+
+.links a {
+	padding-left: 20px;
+	padding-right: 20px;
+	color: #66a6d7 !important;
+	text-decoration: none;
+}
+
+.links a:hover {
+	color: #507ea2 !important;
+	-webkit-transition: all 0.25s ease-in-out;
+ 	-moz-transition: all 0.25s ease-in-out;
+ 	-ms-transition: all 0.25s ease-in-out;
+ 	-o-transition: all 0.25s ease-in-out;
+ 	transition: all 0.25s ease-in-out;
+}
+
+::-webkit-scrollbar
+{
+  width: 12px;  /* for vertical scrollbars */
+  height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: #66a6d7;
 }
