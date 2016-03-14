@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+  <meta charset="utf-8" />
+	<meta name="keywords" content="key, words" />
+	<meta name="description" content="description" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+	<link rel="stylesheet" href="main.css" type="text/css" />
+	<link rel="alternate" title="Website Feed" href="rss.php" type="application/rss+xml" />
+	<link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+	<title>Coup d'Hackers</title>
+</head>
+
+<body style="width: 1920px;">
+
+<!--Navbar-->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <img class="navbar-brand" src="Resources/circle.png"/>
+      <a class="navbar-brand" href="#">Coup d'Hackers</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-special">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Development</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!--Posts-->
+<div class="postcontainer">
+  <div class="navbar navbar-inverse postbar navbar-blue">
+    <div class="container-fluid blue-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#blueBar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="#" class="btn btn-primary btn-sm postbar-button" role="button">Create thread</a>
+      </div>
+      <div class="collapse navbar-collapse" id="blueBar">
+        <ul class="nav navbar-nav navbar-special postbar textbar">
+          <a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a>
+          <a href="#"> 1 </a>
+          <a href="#"> 2 </a>
+          <a href="#"> 3 </a>
+          <a href="#"> 4 </a>
+          <a href="#"> 5 </a>
+          <a href="#">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+        </ul>
+        <ul class="nav navbar-nav navbar-right selected-search">
+          <form id="search-input" class="input-group" action="search.js">
+            <input type="text" class="btn btn-primary btn-sm postbar-search" placeholder="Search" maxlength="28"></input>
+            <a><button type="submit" class="glyphicon glyphicon-search SearchIcon searchbuttonicon"> </button></a>
+          </form>
+        </ul> <!-- search button -->
+      </div> <!-- collapse bar -->
+    </div>
+
+<!-- Thread list -->
+    <div class="row postbox">
+      <div class="threadbox">
+        <div class="threadtitle">
+          <a href="#">Post title is displayed here. It should not be longer than the whole page.</a>
+        </div>
+        <div class="threadinfo">
+          <a href="#">Original Post: User at Time, Date</a><br/>
+          <a href="#">Last Post: User at Time, Date</a>
+        </div>
+        <div class="tags">
+          <a href="#"><kbd>#test</kbd></a>
+          <a href="#"><kbd>#firstpost</kbd></a>
+          <a href="#"><kbd>#webdev</kbd></a>
+        </div>
+        <div class="avatar">
+            <img class="user-pic" src="resources/default-avatar.png"/>
+        </div>
+      </div> <!--threadbox -->
+    </div>
+  </div>
+</div>
+
+<!-- Bottom Links -->
+<div class="links">
+  <div class="container">
+    <a href="#">Home</a>
+    <a href="#">Legal</a>
+    <a href="#">About</a>
+  </div>
+</div>
+
+</body>
