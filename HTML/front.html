@@ -13,7 +13,7 @@
 
 	<link rel="stylesheet" href="main.css" type="text/css" />
 	<link rel="alternate" title="Website Feed" href="rss.php" type="application/rss+xml" />
-	<link rel="icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="icon" href="favicon.ico" type="image/x-icon"/>
 
 	<title>Coup d'Hackers</title>
 </head>
@@ -30,24 +30,44 @@
         <span class="icon-bar"></span>
       </button>
       <img class="navbar-brand" src="Resources/circle.png"/>
-      <a class="navbar-brand" href="#">Coup d'Hackers</a>
+      <a class="navbar-brand" href="front.html">Coup d'Hackers</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-special">
-        <li><a href="#">Home</a></li>
+        <li><a href="front.html">Home</a></li>
         <li><a href="#">Development</a></li>
         <li><a href="#">About</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <div class="btn-group">
+          <li class="dropdown mega-dropdown-menu">
+          <button class="btn dropdown-toggle login-button" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="glyphicon glyphicon-log-in dropdown-toggle"></span> Login</button>
+          <div class="dropdown-menu">
+            <form class="form-signin">
+              <label for="inputEmail" class="sr-only">Email</label>
+              <input type="email" id="inputEmail" class="form-control login-input" placeholder="Email"
+              required autofocus>
+              <label for="inputPassword" class="sr-only">Password</label>
+              <input type="password" id="isnputPassword" class="form-control login-input" placeholder="Password" required>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="remember-me"> Remember me
+                </label>
+              </div>
+              <button class="btn btn-lg btn-primary btn-block input-button" type="submit">Sign in</button>
+            </form>
+          </div>
+        </li>
+        </div>
       </ul>
     </div>
   </div>
 </nav>
 
 <!--Posts-->
-<div class="postcontainer">
+<div class="postcontainer center">
   <div class="navbar navbar-inverse postbar navbar-blue">
     <div class="container-fluid blue-fluid">
       <div class="navbar-header">
@@ -56,7 +76,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="#" class="btn btn-primary btn-sm postbar-button" role="button">Create thread</a>
+        <a href="create_thread.html" class="btn btn-primary btn-sm postbar-button" role="button">Create thread</a>
       </div>
       <div class="collapse navbar-collapse" id="blueBar">
         <ul class="nav navbar-nav navbar-special postbar textbar">
@@ -83,7 +103,143 @@
     <div class="row postbox">
       <div class="threadbox">
         <div class="threadtitle">
-          <a href="#">Post title is displayed here. It should not be longer than the whole page.</a>
+          <a href="#">Thread title goes here. What do people talk about?</a>
+        </div>
+        <div class="threadinfo">
+          <a href="#">Original Post: User at Time, Date</a><br/>
+          <a href="#">Last Post: User at Time, Date</a>
+        </div>
+        <div class="tags">
+          <a href="#"><kbd>#test</kbd></a>
+          <a href="#"><kbd>#firstpost</kbd></a>
+          <a href="#"><kbd>#webdev</kbd></a>
+        </div>
+        <div class="avatar">
+            <img class="user-pic" src="resources/default-avatar.png"/>
+        </div>
+      </div> <!--threadbox -->
+      <div class="threadbox">
+        <div class="threadtitle">
+          <a href="#">Thread title goes here. What do people talk about?</a>
+        </div>
+        <div class="threadinfo">
+          <a href="#">Original Post: User at Time, Date</a><br/>
+          <a href="#">Last Post: User at Time, Date</a>
+        </div>
+        <div class="tags">
+          <a href="#"><kbd>#test</kbd></a>
+          <a href="#"><kbd>#firstpost</kbd></a>
+          <a href="#"><kbd>#webdev</kbd></a>
+        </div>
+        <div class="avatar">
+            <img class="user-pic" src="resources/default-avatar.png"/>
+        </div>
+      </div> <!--threadbox -->
+      <div class="threadbox">
+        <div class="threadtitle">
+          <a href="#">Thread title goes here. What do people talk about?</a>
+        </div>
+        <div class="threadinfo">
+          <a href="#">Original Post: User at Time, Date</a><br/>
+          <a href="#">Last Post: User at Time, Date</a>
+        </div>
+        <div class="tags">
+          <a href="#"><kbd>#test</kbd></a>
+          <a href="#"><kbd>#firstpost</kbd></a>
+          <a href="#"><kbd>#webdev</kbd></a>
+        </div>
+        <div class="avatar">
+            <img class="user-pic" src="resources/default-avatar.png"/>
+        </div>
+      </div> <!--threadbox -->
+      <div class="threadbox">
+        <div class="threadtitle">
+          <a href="#">Thread title goes here. What do people talk about?</a>
+        </div>
+        <div class="threadinfo">
+          <a href="#">Original Post: User at Time, Date</a><br/>
+          <a href="#">Last Post: User at Time, Date</a>
+        </div>
+        <div class="tags">
+          <a href="#"><kbd>#test</kbd></a>
+          <a href="#"><kbd>#firstpost</kbd></a>
+          <a href="#"><kbd>#webdev</kbd></a>
+        </div>
+        <div class="avatar">
+            <img class="user-pic" src="resources/default-avatar.png"/>
+        </div>
+      </div> <!--threadbox -->
+      <div class="threadbox">
+        <div class="threadtitle">
+          <a href="#">Thread title goes here. What do people talk about?</a>
+        </div>
+        <div class="threadinfo">
+          <a href="#">Original Post: User at Time, Date</a><br/>
+          <a href="#">Last Post: User at Time, Date</a>
+        </div>
+        <div class="tags">
+          <a href="#"><kbd>#test</kbd></a>
+          <a href="#"><kbd>#firstpost</kbd></a>
+          <a href="#"><kbd>#webdev</kbd></a>
+        </div>
+        <div class="avatar">
+            <img class="user-pic" src="resources/default-avatar.png"/>
+        </div>
+      </div> <!--threadbox -->
+      <div class="threadbox">
+        <div class="threadtitle">
+          <a href="#">Thread title goes here. What do people talk about?</a>
+        </div>
+        <div class="threadinfo">
+          <a href="#">Original Post: User at Time, Date</a><br/>
+          <a href="#">Last Post: User at Time, Date</a>
+        </div>
+        <div class="tags">
+          <a href="#"><kbd>#test</kbd></a>
+          <a href="#"><kbd>#firstpost</kbd></a>
+          <a href="#"><kbd>#webdev</kbd></a>
+        </div>
+        <div class="avatar">
+            <img class="user-pic" src="resources/default-avatar.png"/>
+        </div>
+      </div> <!--threadbox -->
+      <div class="threadbox">
+        <div class="threadtitle">
+          <a href="#">Thread title goes here. What do people talk about?</a>
+        </div>
+        <div class="threadinfo">
+          <a href="#">Original Post: User at Time, Date</a><br/>
+          <a href="#">Last Post: User at Time, Date</a>
+        </div>
+        <div class="tags">
+          <a href="#"><kbd>#test</kbd></a>
+          <a href="#"><kbd>#firstpost</kbd></a>
+          <a href="#"><kbd>#webdev</kbd></a>
+        </div>
+        <div class="avatar">
+            <img class="user-pic" src="resources/default-avatar.png"/>
+        </div>
+      </div> <!--threadbox -->
+      <div class="threadbox">
+        <div class="threadtitle">
+          <a href="#">Thread title goes here. What do people talk about?</a>
+        </div>
+        <div class="threadinfo">
+          <a href="#">Original Post: User at Time, Date</a><br/>
+          <a href="#">Last Post: User at Time, Date</a>
+        </div>
+        <div class="tags">
+          <a href="#"><kbd>#test</kbd></a>
+          <a href="#"><kbd>#firstpost</kbd></a>
+          <a href="#"><kbd>#webdev</kbd></a>
+        </div>
+        <div class="avatar">
+            <img class="user-pic" src="resources/default-avatar.png"/>
+        </div>
+      </div> <!--threadbox -->
+      <div class="threadbox">
+        <div class="threadtitle">
+          <a href="#">Thread title goes here. What do people talk about?</a>
         </div>
         <div class="threadinfo">
           <a href="#">Original Post: User at Time, Date</a><br/>
@@ -105,7 +261,7 @@
 <!-- Bottom Links -->
 <div class="links">
   <div class="container">
-    <a href="#">Home</a>
+    <a href="front.html">Home</a>
     <a href="#">Legal</a>
     <a href="#">About</a>
   </div>

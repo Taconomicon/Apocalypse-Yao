@@ -9,8 +9,14 @@ body {
 	color: #dedede;
 }
 
+.center {
+	margin: auto;
+	width: 75% !important;
+}
+
 .navbar {
-	width: 100%;
+	border-radius: 0px;
+	border: none;
 }
 
 .navbar-blue {
@@ -19,12 +25,41 @@ body {
 	margin-top: -10px !important;
 }
 
-.textbar {
-	text-align: center;
-	vertical-align: middle !important;
-	margin-top: 8px !important;
-	margin-left: 35px !important;
+.login-input {
+	background-color: #507ea2;
+	border-color: #507ea2;
+	border-radius: 0px;
+	color: #dedede;
 }
+
+.input-button {
+	border-radius: 0px;
+	background-color: #507ea2;
+	border-color: #507ea2;
+}
+
+.login-button {
+	margin-top: 8px;
+	background-color: #232323;
+}
+
+.dropdown-menu {
+	margin-top: 8px;
+	text-align: center;
+	color: #dedede;
+	padding: 0px;
+}
+
+.form-signin {
+	background-color: #232323;
+	padding: 0px;
+}
+
+$('ul.dropdown-menu.mega-dropdown-menu').on('click', function(event){
+    // The event won't be propagated up to the document NODE and
+    // therefore delegated events won't be fired
+    event.stopPropagation();
+});
 
 .navbar-inverse {
 	border-color: #232323;
@@ -74,6 +109,8 @@ body {
 }
 
 .postbar {
+	margin-top: 8px;
+	margin-left: 16px;
 	border: none !important;
 	background-image: none;
 	background-color: #66a6d7 !important;
@@ -83,6 +120,8 @@ body {
 
 .postbar a {
 	font-size: 15pt;
+	margin-left: 4px;
+	margin-right: 4px;
 	height: 100%;
 	text-align: center;
 	color: #dedede;
@@ -194,12 +233,13 @@ body {
 }
 
 .threadbox {
-	height: 100px;
+	min-height: 100px;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	padding-left: 5px;
 	background-color: #2e2d2d;
 	margin-bottom: 10px;
+	overflow: auto;
 }
 
 .avatar {
@@ -268,17 +308,18 @@ button:hover {
 
 .links {
 	text-align: center;
+	padding-top: 2px;
 }
 
 .links a {
 	padding-left: 20px;
 	padding-right: 20px;
-	color: #66a6d7 !important;
+	color: #232323 !important;
 	text-decoration: none;
 }
 
 .links a:hover {
-	color: #507ea2 !important;
+	color: #dedede !important;
 	-webkit-transition: all 0.25s ease-in-out;
  	-moz-transition: all 0.25s ease-in-out;
  	-ms-transition: all 0.25s ease-in-out;
@@ -300,4 +341,40 @@ button:hover {
 ::-webkit-scrollbar-thumb
 {
   background: #66a6d7;
+}
+
+.thinner {
+	margin-bottom: 10px;
+}
+
+.threadpost {
+	min-height: 300px;
+	padding: 10px;
+	background-color: #2e2d2d;
+	margin-bottom: 10px;
+}
+
+.threadpostbox {
+	min-height: 300px;
+	padding-top: 10px !important;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: 0px !important;
+	background-color: #232323;
+	max-height: 830px;
+	overflow: auto;
+}
+
+.submitpost {
+	margin-bottom: 15px !important;
+	float: right;
+	text-decoration: none !important;
+	width: 150px;
+	height: 50px;
+	margin-top: -52px;
+}
+
+.postbody {
+	margin-bottom: 70px !important;
+	resize: vertical;
 }
