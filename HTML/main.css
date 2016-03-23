@@ -9,9 +9,21 @@ body {
 	color: #dedede;
 }
 
+.darkblue {
+	background-color: #507ea2;
+}
+
+.lightblue {
+	background-color: #66a6d7;
+}
+
 .center {
 	margin: auto;
 	width: 75% !important;
+}
+
+.scrollable {
+	overflow: auto;
 }
 
 .navbar {
@@ -254,7 +266,7 @@ $('ul.dropdown-menu.mega-dropdown-menu').on('click', function(event){
 
 .threadinfo {
 	margin-left: 100px;
-	margin-top: 10px
+	margin-top: 10px;
 }
 
 .threadinfo a {
@@ -348,21 +360,59 @@ button:hover {
 }
 
 .threadpost {
-	min-height: 300px;
 	padding: 10px;
 	background-color: #2e2d2d;
 	margin-bottom: 10px;
 }
 
+.navatar {
+	margin-top: 5px;
+	width: 40px;
+	height: 40px;
+	border-radius: 25px;
+	margin-bottom: 5px;
+}
+
 .threadpostbox {
-	min-height: 300px;
 	padding-top: 10px !important;
 	padding-left: 10px;
 	padding-right: 10px;
 	margin-left: 0px !important;
 	background-color: #232323;
+	width: 1415px;
 	max-height: 830px;
 	overflow: auto;
+}
+
+.createthreadbox {
+	min-height: 300px;
+}
+
+.usertitlebar {
+	width: 90%;
+	margin-left: 5px;
+	padding-left: 5px;
+	margin-right: 5px;
+	float: right;
+	background-color: #ec5db8;
+	height: 35px;
+}
+
+.postavatar {
+	width: 117px;
+	height: 117px;
+}
+
+.postbody {
+	width: 1375px;
+	word-wrap: break-word;
+	padding-left: 127px;
+	margin-top: -72px;
+	font-size: 15px;
+}
+
+.userpost {
+	min-height: 137px;
 }
 
 .submitpost {
@@ -374,7 +424,39 @@ button:hover {
 	margin-top: -52px;
 }
 
-.postbody {
+.inputpostbody {
 	margin-bottom: 70px !important;
 	resize: vertical;
+}
+
+.threadtitlebox {
+	width: 50px;
+	background-color:
+}
+
+.createtitle {
+	width: 1415px;
+	height: 42px;
+}
+
+.threadtoptext {
+	padding-top: 10px;
+	font-size: 15px;
+	height: 100%;
+	text-align: center;
+}
+
+.threadtoppages {
+	width: 180px;
+	padding-left: 5px;
+	padding-top: 7px;
+}
+
+.threadtoppages a {
+	font-size: 15pt;
+	margin-left: 4px;
+	margin-right: 4px;
+	text-align: center;
+	color: #dedede;
+	text-decoration: none;
 }
