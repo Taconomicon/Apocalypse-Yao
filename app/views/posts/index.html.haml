@@ -1,9 +1,50 @@
-#posts
-	- @post.each do |post|
-		.post
-			%h2.title= link_to post.title, post
-			%p.date
-				Published at
-				= time_ago_in_words(post.created_at)
-				by
-				= post.user.email
+.navbar.navbar-inverse.postbar.navbar-blue{:style => "min-width: 1065px !important;"}
+	.container-fluid.blue-fluid
+		.navbar-header
+			%button.navbar-toggle{"data-target" => "#blueBar", "data-toggle" => "collapse", :type => "button"}
+				%span.icon-bar
+				%span.icon-bar
+				%span.icon-bar
+			.wrapper
+				%a.btn.btn-primary.btn-sm.postbar-button{:href => new_post_path, :role => "button"} Create Thread
+		#blueBar.collapse.navbar-collapse
+			%ul.nav.navbar-nav.navbar-special.postbar.textbar
+				%a{:href => "#"}
+					%span.glyphicon.glyphicon-chevron-left
+				%a{:href => "#"} 1
+				%a{:href => "#"} 2
+				%a{:href => "#"} 3
+				%a{:href => "#"} 4
+				%a{:href => "#"} 5
+				%a{:href => "#"}
+					%span.glyphicon.glyphicon-chevron-right
+			%ul.nav.navbar-nav.navbar-right.selected-search
+				%form#search-input.input-group{:action => "search.js"}
+					%input.btn.btn-primary.btn-sm.postbar-search{:maxlength => "28", :placeholder => "Search", :type => "text"}
+					%a
+						%button.glyphicon.glyphicon-search.SearchIcon.searchbuttonicon{:type => "submit"}
+
+	.row.postbox
+		#posts
+			- @post.each do |post|
+				.post
+					.threadbox
+						.threadtitle
+							%h2.title= link_to post.title, post
+						.threadinfo
+							%p.date
+							Posted
+							= time_ago_in_words(post.created_at)
+							ago.
+							%br/
+							Thread created by
+							= post.user.email
+						.tags
+							%a{:href => "#"}
+								%kbd #test
+							%a{:href => "#"}
+								%kbd #firstpost
+							%a{:href => "#"}
+								%kbd #webdev
+						.avatar
+							%img.user-pic{:src => asset_path('defaultavatar.png')}

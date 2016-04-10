@@ -1,18 +1,30 @@
-#post_content
-	%h1= @post.title
-	%p= @post.content
+.createtitle.lightblue
+	.navbar-header
+		.threadtoptext.threadtoppages{:style => "text-align: left; max-width: 180px; display: inline-block;"}
+			%a Pages:
+			%a{:href => root_path} 1
+			%a{:href => root_path} 2
+			%a{:href => root_path} 3
+			%a{:href => root_path}
+				%span.glyphicon.glyphicon-chevron-right
+		.navbar.nav-special.threadtoptext
+			.wrapper{:style => "text-align: center; margin-left: 200px; margin-right: 160px;"}
+				= @post.title
+			.threadpostbox
+				.threadpost.userpost
+					%img.postavatar{:src => asset_path('defaultavatar.png')}
+					.usertitlebar
+						.username{:style => "float: left; margin-left: 5px; margin-top: 7px;"}
+							AUTHOR
+						.buttons{:style => "float: right; margin-right: 5px; margin-top: 7px; height: 100%;"}
+							= link_to "Edit", edit_post_path(@post), class: "button"
+							= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure you want to do this?" }, class: "button"
+					.postbody
+						%p= @post.content
 
-	#comments
-		%h2
-			= @post.comments.count
-			Comments
-			= render @post.comments
+				#comments
+				= render @post.comments
 
-		%h3 Reply to thread
-		= render "comments/form"
-
-	%br/
-	%hr/
-	%br/
-	= link_to "Edit", edit_post_path(@post), class: "button"
-	= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure you want to do this?" }, class: "button"
+		.threadpostbox
+			.threadpost.userpost
+				= render "comments/form"
