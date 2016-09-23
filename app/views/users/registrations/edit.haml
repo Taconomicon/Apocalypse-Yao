@@ -1,0 +1,151 @@
+.createtitle.lightblue
+  .threadpostbox
+    %h2{:style => "margin-top: 0px; margin-left: 10px;"}
+      Account Settings
+    .threadpost.createthreadbox
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal'}) do |f|
+        .wrapper{:style => "border-radius: 10px; margin-left: 370px; width: 620px; padding-left: 5px; padding-right: 5px; height: 100%; background-color: #d9534f;"}= devise_error_messages!
+
+        .wrapper{:style => "height: 340px;"}
+          .col-md-4{:style => "background-color: #337ab7; padding-bottom: 15px; height: 330px;"}
+            .form-group
+              = f.label "Avatar", class: 'col-sm-2 control-label', style: 'margin-left: 190px;'
+            .wrapper
+              = f.label "Image"
+              = f.file_field :avatar
+            .wrapper{:style => "font-size: 12pt;"}
+              = f.check_box :imgvisible, as: :boolean, checked_value: false, unchecked_value: true, style: 'margin-top: 10px;'
+              = f.label "Hide Avatar Image"
+            .wrapper{:style => "font-size: 12pt;"}
+              = f.check_box :textcover, as: :boolean, checked_value: true, unchecked_value: false, style: 'margin-top: 10px;'
+              = f.label "Display Text Cover"
+            -#.wrapper{:style => "margin-left: 168px; margin-top: 40px;"}
+            -#  %img.user-pic= image_tag(current_user.avatar.url(:thumb))
+
+          .col-md-4{:style => "background-color: #286090; padding-bottom: 15px; height: 330px;"}
+            .form-group
+              = f.label :background, class: 'col-sm-2 control-label', style: 'margin-left: 190px;'
+            .wrapper
+              = f.label "Image"
+              = f.file_field :background
+            .wrapper{:style => "font-size: 12pt;"}
+              = f.check_box :bgvisible, as: :boolean, checked_value: true, unchecked_value: false, style: 'margin-top: 10px;'
+              = f.label "Display Background Image"
+            .wrapper{:style => "font-size: 12pt;"}
+              = f.check_box :bgrepeat, as: :boolean, checked_value: true, unchecked_value: false, style: 'margin-top: 10px;'
+              = f.label "Background Image Repeat"
+            .wrapper{:style => "font-size: 12pt;"}
+              = f.check_box :bgfixed, as: :boolean, checked_value: true, unchecked_value: false, style: 'margin-top: 10px;'
+              = f.label "Background Image Fixed"
+            .wrapper{:style => "padding-bottom: 5px;"}
+              = f.label "Background Color"
+              = f.text_field :bgcolor, class: "form-control"
+            .wrapper
+              = f.label "Text Color"
+              = f.text_field :txtcolor, class: "form-control"
+
+          .col-md-4{:style => "background-color: #337ab7; padding-bottom: 15px; height: 330px;"}
+            .form-group
+              = f.label :titlebar, class: 'col-sm-2 control-label', style: 'margin-left: 190px;'
+            .wrapper
+              = f.label "Image"
+              = f.file_field :titlebar
+            .wrapper{:style => "font-size: 12pt;"}
+              = f.check_box :tbvisible, as: :boolean, checked_value: true, unchecked_value: false, style: 'margin-top: 10px;'
+              = f.label "Display Titlebar Image"
+            .wrapper{:style => "padding-bottom: 5px; margin-top: 12px;"}
+              = f.label "Titlebar Color"
+              = f.text_field :tbcolor, class: "form-control"
+            .wrapper{:style => "padding-bottom: 5px;"}
+              = f.label "User Name"
+              = f.text_field :name, class: "form-control",autofocus: true
+            .wrapper
+              = f.label :title
+              = f.text_field :title, class: "form-control",autofocus: true
+
+        .form-group
+          = f.label :email, class: "col-sm-2 control-label"
+          .col-sm-6
+            = f.email_field :email, class: "form-control"
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          %div
+            Currently waiting confirmation for: #{resource.unconfirmed_email}
+        .form-group
+          = f.label :password, class: "col-sm-2 control-label"
+          %i{:style => "font-size: 15pt;"} (Leave blank if you don't want to update)
+          .col-sm-6
+            = f.password_field :password, autocomplete: "off", class: "form-control"
+        .form-group
+          = f.label :password_confirmation, class: "col-sm-2 control-label"
+          .col-sm-6
+            = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
+        %br
+        %br
+        .form-group
+          = f.label :current_password, class: "col-sm-2 control-label"
+          %b{:style => "font-size: 15pt;"} Input password to confirm changes.
+          .col-sm-6
+            = f.password_field :current_password, autocomplete: "off", class: "form-control"
+        .form-group
+          .col-sm-offset-2.col-sm-6
+            = f.submit "Update", class: "btn btn-primary"
+            = link_to "Cancel", root_path, class: "btn btn-danger"
+
+  - background_url= ""
+  - titlebar_url= ""
+  - textcover_sty= "padding: 2px;"
+
+  - if current_user.textcover then
+    - textcover_sty += "margin-top: 40px; border-radius: 3px; background-color: rgba(46,45,45,0.7); min-height: 77px;"
+
+  - if current_user.title.nil? || current_user.title.empty?
+    - title = ""
+  - else
+    - title = " | " + current_user.title
+
+  - if current_user.bgvisible then
+    - background_url += "background-image: url('" + current_user.background.url(:back) + "');"
+
+  - if current_user.bgfixed then
+    - background_url += "background-attachment: fixed; "
+
+  - if current_user.bgrepeat then
+    - background_url += "background-repeat: repeat-y; "
+  - else
+    - background_url += "background-repeat: no-repeat; "
+
+  -if !(current_user.bgcolor.nil?)
+    - background_url += "background-color: #{current_user.bgcolor.tr(';','')};"
+
+  - if current_user.tbvisible then
+    - titlebar_url += "background-image: url('" + current_user.titlebar.url(:bar) + "');"
+
+  - if current_user.tbcolor == "none"
+    - titlebar_url += "background: none; "
+  - else
+    - titlebar_url += "background-color: #{current_user.tbcolor.tr(';','')};"
+
+  - if current_user.imgvisible
+    - avatar_op = "opacity: 0;"
+  - else
+    - avatar_op = "opacity: 1;"
+
+
+  - avatar_url= current_user.avatar.url(:thumb)
+  - text_color= current_user.txtcolor.tr(';','')
+
+  .threadpostbox{:style => "margin-top: -10px;"}
+    %h2{:style => "margin-top: 0px; margin-left: 10px;"}
+      Preview Style
+    .threadpost.userpost{:style => "#{background_url}"}
+      .wrapper{:style => avatar_op}
+        %img.user-pic= image_tag(avatar_url)
+      .usertitlebar{:style => "#{titlebar_url}"}
+        .username{:style => "float: left; margin-left: 5px; margin-top: 4px; font-size: 14pt; color: #{text_color};"}
+          - if current_user.name.nil? || current_user.name.strip.empty? then
+            %p.comment_author= current_user.email + title
+          - else
+            %p.comment_author= current_user.name.strip + title
+      .postbody{:style => "color: #{text_color}"}
+        .textcover{:style => "#{textcover_sty}"}
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?

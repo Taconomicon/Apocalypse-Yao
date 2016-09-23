@@ -1,0 +1,22 @@
+<div class= "createtitle">
+  <div class= "threadpostbox">
+    <h2 style="margin-top: -5px;">Forgot your password?</h2>
+    <div class="threadpost">
+      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= f.error_notification %>
+
+        <div class="form-inputs">
+          <%= f.input :email, :class => 'titleinput', required: true, autofocus: true %>
+        </div>
+        </br>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Send me reset password instructions", :class => 'btn btn-primary' %>
+        </div>
+      <% end %>
+      </br>
+
+      <%= render "users/shared/links" %>
+    </div>
+  </div>
+</div>
