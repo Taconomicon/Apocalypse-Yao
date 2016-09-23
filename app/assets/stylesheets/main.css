@@ -9,6 +9,22 @@ body {
 	color: #dedede;
 }
 
+
+.round-image-50 {
+    background-color: white;
+    border: 1px solid #d9d9d9;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    text-align: center;
+    img { width: 100% }
+}
+
+
+
 .navbar {
 	width: 100%;
 }
@@ -21,9 +37,7 @@ body {
 
 .textbar {
 	text-align: center;
-	vertical-align: middle !important;
-	margin-top: 8px !important;
-	margin-left: 35px !important;
+	vertical-align: 5%;
 }
 
 .navbar-inverse {
@@ -73,9 +87,9 @@ body {
 }
 
 .postbar {
-	border: none !important;
+	border: none;
 	background-image: none;
-	background-color: #66a6d7 !important;
+	background-color: #66a6d7;
 	background-repeat: no-repeat;
 	border-radius: 0px;
 }
@@ -89,23 +103,19 @@ body {
 }
 
 .postbar a:hover {
-	color: #507ea2 !important;
+	color: #507ea2;
 }
 
 .postbar button:hover {
-	color: #416683 !important;
+	color: #416683;
 }
 
 .postbar-button {
 	float: left;
-	border-radius: 0px;
-	margin-left: -15px !important;
-	background-color: #507ea2 !important;
-	border-color: #507ea2 !important;
+	background-color: #507ea2;
+	border-color: #507ea2;
 	vertical-align: middle;
 	text-decoration: none;
-	height: inherit !important;
-	width: 400px !important;
 }
 
 .blue-fluid {
@@ -175,10 +185,10 @@ body {
 .postbox {
 	min-height: 100px;
 	padding-top: 10px !important;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-left: 0px !important;
-	width: 100% !important;
+	padding-left: 5%;
+	padding-right: 5%;
+	margin-left: 0% !important;
+	width: 80%% !important;
 	background-color: #232323;
 	max-height: 830px;
 	overflow: auto;
@@ -218,6 +228,15 @@ body {
 .threadinfo a {
 	color: #888888 !important;
 	font-size: 12pt !important;
+}
+
+.threadtitletext {
+	text-align: center; 
+	margin-left: 30%;
+	margin-right: 30%;
+	font-size: 18pt; 
+	font-weight: bold; 
+	margin-top: -6px;
 }
 
 .tags {

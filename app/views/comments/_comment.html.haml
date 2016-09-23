@@ -1,11 +1,67 @@
+- background_url= ""
+- titlebar_url= ""
+- textcover_sty= "padding: 2px;"
+- text_color= ""
+
+- if comment.user.textcover then
+	- textcover_sty += "margin-top: 40px; border-radius: 3px; background-color: rgba(46,45,45,0.7); min-height: 77px;"
+
+- if comment.user.bgvisible then
+	- background_url += "background-image: url('" + comment.user.background.url(:back) + "');"
+
+- if comment.user.bgfixed then
+	- background_url += "background-attachment: fixed; "
+
+- if comment.user.bgrepeat then
+	- background_url += "background-repeat: repeat-y; "
+- else
+	- background_url += "background-repeat: no-repeat; "
+
+- if !(comment.user.bgcolor.nil?)
+	- background_url += "background-color: " + comment.user.bgcolor.tr(';','') + ";"
+
+- if comment.user.tbvisible then
+	- titlebar_url += "background-image: url('" + comment.user.titlebar.url(:bar) + "');"
+
+- if comment.user.tbcolor == "none"
+	- titlebar_url += "background: none; "
+- elsif (!comment.user.tbcolor.nil?)
+	- titlebar_url += "background-color: #{comment.user.tbcolor.tr(';','')};"
+
+- if comment.user.imgvisible
+	- avatar_op = "opacity: 0;"
+- else
+	- avatar_op = "opacity: 1;"
+
+- avatar_url= comment.user.avatar.url(:thumb)
+
+- if (!comment.user.txtcolor.nil?)
+	- text_color= comment.user.txtcolor.tr(';','')
+
+- if comment.user.title.nil? || comment.user.title.empty? then
+	- title = ""
+- else
+	- title = " | " + comment.user.title
+
+- def parse(string)
+	- string.gsub("[","<b>").gsub("]","</b>").gsub("\n\r","<br>").gsub("\r", "").gsub("\n", "<br>").gsub("{","<i>").gsub("}","</i>")
+
 .comment
-	.threadpost.userpost
-		%img.postavatar{:src => asset_path('defaultavatar.png')}
-		.usertitlebar
-			.username{:style => "float: left; margin-left: 5px; margin-top: 7px;"}
-				%p.comment_author= comment.user.email
-			.buttons{:style => "float: right; margin-right: 5px; margin-top: 7px; height: 100%;"}
-				= link_to "Edit", edit_post_comment_path(comment.post, comment)
-				= link_to "Delete", [comment.post, comment], method: :delete, data: { confirm: "Are you sure?"}
-		.postbody
-			%p.comment_content= comment.comment
+	.threadpost.userpost{:style => "#{background_url}"}
+		.wrapper{:style => avatar_op}
+			%img.user-pic= image_tag(avatar_url)
+		.usertitlebar{:style => "#{titlebar_url}"}
+			.username{:style => "float: left; margin-left: 0px; margin-top: 4px; font-size: 14pt; color: #{text_color};"}
+				- if comment.user.name.nil? || comment.user.name.strip.empty? then
+					%p.comment_author= comment.user.email + title
+				- else
+					%p.comment_author= comment.user.name.strip + title
+			- if user_signed_in? && current_user.email == comment.user.email
+				.buttons{:class => 'titlebar-text'}
+					= link_to "Edit", edit_post_comment_path(comment.post, comment)
+					= link_to "Delete", [comment.post, comment], method: :delete, data: { confirm: "Are you sure?"}
+		.postbody{:style => "color: #{text_color}"}
+			.textcover{:style => "#{textcover_sty}"}
+				- filtered = parse(comment.comment)
+				= raw(filtered)
+				- comment.created_at

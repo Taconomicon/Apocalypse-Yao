@@ -15,9 +15,9 @@
       = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
       = javascript_include_tag 'application', 'data-turbolinks-track' => true
       = csrf_meta_tags
-  %body{:style => "width: 100%; min-width: 1058px;"}
-    / Navbar
-    %nav.navbar.navbar-inverse{:style => "min-width: 1065px !important;"}
+  %body{:style => "width: 100%;"}
+    / Navbar min-width: 1058px;
+    %nav.navbar.navbar-inverse
       .container-fluid
         .navbar-header
           %button.navbar-toggle{"data-target" => "#myNavbar", "data-toggle" => "collapse", :type => "button"}
@@ -27,47 +27,49 @@
           %img.navbar-brand{:src => asset_path('circle.png')}
           %a.navbar-brand{:href => root_path} Coup d'Hackers
         #myNavbar.collapse.navbar-collapse
-          %ul.nav.navbar-nav.navbar-special{:style => "margin-right: 120px;"}
+          %ul.nav.navbar-nav.navbar-special{:style => "text-align: center"}
             %li
               %a.navbar-brand{:href => root_path} Home
             %li
-              %a.navbar-brand{:href => root_path} Development
+              %a.navbar-brand{:href => "https://github.com/Taconomicon/Apocalypse-Yao"} Development
             %li
-              %a.navbar-brand{:href => root_path} About
+              %a.navbar-brand{:href => "/pages/about"} About
           %ul.nav.navbar-nav.navbar-right
+
             - if user_signed_in?
-              .btn-group
+              .btn-group{:style => "margin-left: 120px;"}
                 %li.dropdown.mega-dropdown-menu
                   %button.btn.dropdown-toggle.login-button{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-                    %span.glyphicon.glyphicon-user
-                  .dropdown-menu
-                    %form.form-signin
-                      %a{:href => root_path} Account
+                    %li.round-image-50= image_tag(current_user.avatar.url(:thumb))
+                  .dropdown-menu{:style => "margin-right: 20px; margin-top: 4px; margin-bottom: 7px; border-radius: 0px !important; background-color: #507ea2 !important;"}
+                    %form.form-signin{:style => "margin-top: 10px; margin-bottom: 10px; font-size: 20px; background-color: #507ea2;"}
+                      %a{:href => edit_user_registration_path, :style => "margin-bottom: 10px; text-decoration: none;"} Account
                       %br
-                      %a{:href => destroy_user_session_path} Log Out
+                      %a{:href => destroy_user_session_path, :style => "font-size: 20px; text-decoration: none;"} Log Out
             - else
               %li
-                .wrapper
-                  %span.glyphicon.glyphicon-user
-                  %a{:href => new_user_session_path} Sign Up
+                .wrapper{:style => "margin-top: 15px; margin-left: 10px; font-size: 14px;"}
+                  %a{:href => "/users/sign_up", :style => "text-decoration: none;"}
+                    %span.glyphicon.glyphicon-user
+                    Sign Up
               .btn-group
                 %li.dropdown.mega-dropdown-menu
                   %button.btn.dropdown-toggle.login-button{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
                     %span.glyphicon.glyphicon-log-in.dropdown-toggle
                     Login
-                  .dropdown-menu
-                    %form.form-signin
-                      %label.sr-only{:for => "inputEmail"} Email
-                      %input#inputEmail.form-control.login-input{:autofocus => "", :placeholder => "Email", :required => "", :type => "email"}
-                        %label.sr-only{:for => "inputPassword"} Password
-                        %input#isnputPassword.form-control.login-input{:placeholder => "Password", :required => "", :type => "password"}
+                  .dropdown-menu{:style => "margin-right: 20px;"}
+                    %form.form-signin{:id => "new_user", :class => "new_user", :action => "/users/sign_in", :method => "post"}
+                      %input{:name => "authenticity_token", :value => form_authenticity_token, :type =>"hidden"}
+                      %label.sr-only{:for => "user_email"} Email
+                      %input#inputEmail.form-control.login-input{:id => "user_email", :autofocus => "", :placeholder => "Email", :required => "", :type => "email", :name => "user[email]"}
+                        %label.sr-only{:for => "user_password"} Password
+                        %input#isnputPassword.form-control.login-input{:id => "user_password", :name => "user[password]", :placeholder => "Password", :required => "", :type => "password"}
                           .checkbox
-                            %label
-                              %input{:type => "checkbox", :value => "remember-me"}
+                            %label{:id => "user_remember_me"}
+                              %input{:name => "user[remember_me]", :value =>"0", :type =>"hidden"}
+                              %input{:id => "user_remember_me", :value =>"1", :type => "checkbox", :value => "1"}
                                 Remember me
-                          %button.btn.btn-lg.btn-primary.btn-block.input-button{:type => "submit"} Sign in
-    / Posts
+                          %input.btn.btn-lg.btn-primary.btn-block.input-button{:name => "commit", :value => "Log in", :type => "submit"}
+    /Posts
     .postcontainer.center
       = yield
-
-      / threadbox

@@ -1,30 +1,125 @@
-.createtitle.lightblue
-	.navbar-header
-		.threadtoptext.threadtoppages{:style => "text-align: left; max-width: 180px; display: inline-block;"}
-			%a Pages:
-			%a{:href => root_path} 1
-			%a{:href => root_path} 2
-			%a{:href => root_path} 3
-			%a{:href => root_path}
-				%span.glyphicon.glyphicon-chevron-right
-		.navbar.nav-special.threadtoptext
-			.wrapper{:style => "text-align: center; margin-left: 200px; margin-right: 160px;"}
-				= @post.title
-			.threadpostbox
-				.threadpost.userpost
-					%img.postavatar{:src => asset_path('defaultavatar.png')}
-					.usertitlebar
-						.username{:style => "float: left; margin-left: 5px; margin-top: 7px;"}
-							AUTHOR
-						.buttons{:style => "float: right; margin-right: 5px; margin-top: 7px; height: 100%;"}
-							= link_to "Edit", edit_post_path(@post), class: "button"
-							= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure you want to do this?" }, class: "button"
-					.postbody
-						%p= @post.content
+- page = 0
 
-				#comments
-				= render @post.comments
+- path = /(\/posts\/\d+)/.match(request.fullpath)
+- req = request.fullpath.split('?')
+- if request.fullpath =~ /page/
+  - page = req[1].gsub("page=","").to_i
 
-		.threadpostbox
-			.threadpost.userpost
-				= render "comments/form"
+- if page < 0
+  - page = 0
+
+- background_url= ""
+- titlebar_url= ""
+- textcover_sty= "padding: 2px;"
+- text_color= ""
+
+- maxpage = (@post.comments.length+1)/10
+
+- if page > maxpage
+  - page = maxpage
+
+- if page == 0
+  - top = 9
+- else
+  - top = 10
+
+- range = page*10
+
+- if @post.user.bgvisible then
+  - background_url += "background-image: url('" + @post.user.background.url(:back)+ "');"
+
+- if @post.user.bgfixed then
+  - background_url += "background-attachment: fixed; "
+
+- if @post.user.bgrepeat then
+  - background_url += "background-repeat: repeat-y; "
+- else
+  - background_url += "background-repeat: no-repeat; "
+
+- if @post.user.textcover then
+  - textcover_sty += "margin-top: 40px; border-radius: 3px; background-color: rgba(46,45,45,0.7); min-height: 77px;"
+
+- if !(@post.user.bgcolor.nil?)
+  - background_url += "background-color: " + @post.user.bgcolor.tr(';','') + ";"
+
+- if @post.user.tbvisible then
+  - titlebar_url += "background-image: url('" + @post.user.titlebar.url(:bar) + "');"
+
+- if @post.user.tbcolor == "none"
+  - titlebar_url += "background: none; "
+- elsif (!@post.user.tbcolor.nil?)
+  - titlebar_url += "background-color: #{@post.user.tbcolor.tr(';','')};"
+
+- if @post.user.imgvisible
+  - avatar_op = "opacity: 0;"
+- else
+  - avatar_op = "opacity: 1;"
+
+- avatar_url= @post.user.avatar.url(:thumb)
+- if (!@post.user.txtcolor.nil?)
+  - text_color= @post.user.txtcolor.tr(';','')
+
+- if @post.user.title.nil? || @post.user.title.empty? then
+  - title = ""
+- else
+  - title = " | " + @post.user.title
+
+
+- def parse(string)
+  - string.gsub("[","<b>").gsub("]","</b>").gsub("\n\r","<br>").gsub("\r", "").gsub("\n", "<br>").gsub("{","<i>").gsub("}","</i>")
+
+
+.createtitle.lightblue{:style => "margin-left: 15px; margin-top: -10px;"}
+
+  .navbar-header
+    .threadtoptext.threadtoppages{:style=>"z-index: 1;"}
+      .postlinks{:style => "margin-left: 5%;"}
+        %b{:style => "font-size: 15pt;"} Pages:
+        - if page > 0
+          %a{:href => path[1] + "/?page=#{page-2}"}
+            %span.glyphicon.glyphicon-chevron-left
+          - if maxpage == page
+            %a{:href => path[1] + "/?page=#{page-1}"}= page
+          %a{:href => path[1] + "/?page=#{page}"}
+            %b= page+1
+          - if maxpage != page
+            %a{:href => path[1] + "/?page=#{page+1}"}= page+2
+            %a{:href => path[1] + "/?page=#{page+2}"}
+              %span.glyphicon.glyphicon-chevron-right
+        - else
+          %a{:href => path[1] + "/?page=#{page}"}
+            %b= page+1
+          - if maxpage != page
+            %a{:href => path[1] + "/?page=#{page+1}"}= page+2
+            %a{:href => path[1] + "/?page=#{page+2}"}
+              %span.glyphicon.glyphicon-chevron-right
+    .nav-special.threadtoptext
+      .threadtitletext{:style => "text-align: center; margin-left: 30%; margin-right: 35%; font-size: 18pt; font-weight: bold; margin-top: -6px;"}
+        = @post.title
+      .threadpostbox
+        - if page == 0
+          .threadpost.userpost{:style => "#{background_url}"}
+            .wrapper{:style => avatar_op}
+              %img.postavatar= image_tag(avatar_url)
+            .usertitlebar{:style => "#{titlebar_url}"}
+              .username{:style => "float: left; margin-left: 0px; margin-top: 4px; font-size: 14pt; color: #{text_color};"}
+                - if @post.user.name.nil? || @post.user.name.strip.empty? then
+                  = @post.user.email + title
+                - else
+                  = @post.user.name.strip + title
+              - if user_signed_in? && current_user.email == @post.user.email
+                .buttons{:class => 'titlebar-text'}
+                  = link_to "Edit", edit_post_path(@post), class: "button"
+                  = link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure you want to do this?" }, class: "button"
+            .postbody{:style => "background: none; color: #{text_color}; z-index: 0;"}
+              .textcover{:style => "#{textcover_sty}"}
+                - filtered = parse(@post.content)
+                = raw(filtered)
+
+        #comments
+        = render @post.comments[range,top]
+
+  - if user_signed_in?
+    .threadpostbox
+      .threadpost.userpost
+        = render "comments/form"

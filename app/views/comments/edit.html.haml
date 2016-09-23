@@ -2,4 +2,4 @@
 	.threadpost.userpost
 		= simple_form_for([@post, @comment]) do |f|
 			= f.input :comment, label: "Edit Reply", input_html: {class: 'inputpostbody'}
-			= f.submit
+			= f.submit "Update Comment", class: "btn btn-primary"

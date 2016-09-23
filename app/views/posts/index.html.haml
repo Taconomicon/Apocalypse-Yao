@@ -1,4 +1,24 @@
-.navbar.navbar-inverse.postbar.navbar-blue{:style => "min-width: 1065px !important;"}
+- page = 0
+- search = '.'
+- req = request.fullpath
+
+- if req != '/'
+	- if req =~ /search/
+		- search = req.gsub("/?search=", "").gsub("+", " ")
+	- if req =~ /page/
+		- page = req.gsub("/?page=","").to_i
+
+- size = @post.size
+
+- if page < 0
+	- page = 0
+- if page > (size/15)
+	- page = (size/15)
+- range = page*15
+
+- postlist = @post.limit(15).offset(range).select{|post| post.title.downcase =~ /#{search}/i || post.tags =~ /#{search}/i}
+
+.navbar.navbar-inverse.postbar.navbar-blue
 	.container-fluid.blue-fluid
 		.navbar-header
 			%button.navbar-toggle{"data-target" => "#blueBar", "data-toggle" => "collapse", :type => "button"}
@@ -6,45 +26,69 @@
 				%span.icon-bar
 				%span.icon-bar
 			.wrapper
-				%a.btn.btn-primary.btn-sm.postbar-button{:href => new_post_path, :role => "button"} Create Thread
+				%a.btn.btn-primary.btn-lg.postbar-button{:href => new_post_path, :role => "button"} Create Thread
 		#blueBar.collapse.navbar-collapse
 			%ul.nav.navbar-nav.navbar-special.postbar.textbar
-				%a{:href => "#"}
-					%span.glyphicon.glyphicon-chevron-left
-				%a{:href => "#"} 1
-				%a{:href => "#"} 2
-				%a{:href => "#"} 3
-				%a{:href => "#"} 4
-				%a{:href => "#"} 5
-				%a{:href => "#"}
+				- if (page < 3)
+					%a{:href => "/?page=#{page-1}"}
+						%span.glyphicon.glyphicon-chevron-left
+					- i = 0
+					- for i in (0...5)
+						- if i == page
+							%a{:href => "/?page=#{i}"}
+								%b= i+1
+						- else
+							%a{:href => "/?page=#{i}"}= i+1
+				- else
+					%a{:href => "/?page=#{page-3}"}
+						%span.glyphicon.glyphicon-chevron-left
+					%a{:href => "/?page=#{page-2}"}= page-1
+					%a{:href => "/?page=#{page-1}"}= page
+					%a{:href => "/?page=#{page}"}
+						%b= page+1
+					%a{:href => "/?page=#{page+1}"}= page+2
+					%a{:href => "/?page=#{page+2}"}= page+3
+				%a{:href => "/?page=#{page+3}"}
 					%span.glyphicon.glyphicon-chevron-right
 			%ul.nav.navbar-nav.navbar-right.selected-search
-				%form#search-input.input-group{:action => "search.js"}
-					%input.btn.btn-primary.btn-sm.postbar-search{:maxlength => "28", :placeholder => "Search", :type => "text"}
+				%form#search-input.input-group{:method => "get", :action => req}
+					%input.btn.btn-primary.btn-lg.postbar-search{:maxlength => "28", :placeholder => "Search", :type => "text", :name => "search"}
 					%a
 						%button.glyphicon.glyphicon-search.SearchIcon.searchbuttonicon{:type => "submit"}
 
 	.row.postbox
 		#posts
-			- @post.each do |post|
+			- postlist.each do |post|
+				- post_tags = post.tags
+				- if !(post_tags.nil?)
+					- post_tags = post_tags.split(" ")
 				.post
 					.threadbox
-						.threadtitle
+						.threadtitle{:style => "margin-left: 95px;"}
 							%h2.title= link_to post.title, post
 						.threadinfo
 							%p.date
 							Posted
 							= time_ago_in_words(post.created_at)
-							ago.
+							ago. 
+							- if !(post.comments.last.nil?)
+								Last comment
+								= time_ago_in_words(post.comments.last.created_at)
+								ago.
 							%br/
 							Thread created by
-							= post.user.email
+							- if post.user.name.nil? || post.user.name.strip.empty?
+								= post.user.email + "."
+							- else
+								= post.user.name.strip + "."
 						.tags
-							%a{:href => "#"}
-								%kbd #test
-							%a{:href => "#"}
-								%kbd #firstpost
-							%a{:href => "#"}
-								%kbd #webdev
+							- if !(post_tags.nil?)
+								- post_tags.each do |tag|
+									- hashtag = "#" + tag
+									%a{:href => "/?search=#{tag}"}
+										%kbd #{hashtag}
+							-#- else
+							-#	%a{:href => "#"}
+							-#		%kbd #Untagged
 						.avatar
-							%img.user-pic{:src => asset_path('defaultavatar.png')}
+							%img.user-pic= image_tag(post.user.avatar.url(:thumb))

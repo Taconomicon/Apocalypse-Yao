@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317161606) do
+ActiveRecord::Schema.define(version: 20160426154859) do
+
+  create_table "add_user_textcovers", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.boolean  "textcover"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "add_user_textcovers", ["email"], name: "index_add_user_textcovers_on_email", unique: true
+  add_index "add_user_textcovers", ["reset_password_token"], name: "index_add_user_textcovers_on_reset_password_token", unique: true
 
   create_table "comments", force: :cascade do |t|
     t.text     "comment"
@@ -30,21 +49,48 @@ ActiveRecord::Schema.define(version: 20160317161606) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+    t.string   "tags"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                   default: "",    null: false
+    t.string   "encrypted_password",      default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",           default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.string   "name"
+    t.datetime "date_of_birth"
+    t.boolean  "is_female",               default: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string   "background_file_name"
+    t.string   "background_content_type"
+    t.integer  "background_file_size"
+    t.datetime "background_updated_at"
+    t.string   "titlebar_file_name"
+    t.string   "titlebar_content_type"
+    t.integer  "titlebar_file_size"
+    t.datetime "titlebar_updated_at"
+    t.string   "tbopacity"
+    t.string   "bgcolor"
+    t.string   "tbcolor"
+    t.string   "txtcolor"
+    t.string   "title"
+    t.boolean  "bgvisible"
+    t.boolean  "tbvisible"
+    t.boolean  "imgvisible"
+    t.boolean  "bgfixed"
+    t.boolean  "bgrepeat"
+    t.boolean  "textcover"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

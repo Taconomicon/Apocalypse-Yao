@@ -7,6 +7,23 @@ body {
 	font-size: 12px;
 	background-color: #3f3f3f;
 	color: #dedede;
+	background-image: url('/assets/diagmonds.png');
+}
+
+
+.round-image-50 {
+	background-color: none;
+	border: none;
+	border-radius: 20px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	height: 25px;
+	width: 25px;
+	overflow: hidden;
+	text-align: center;
+	margin-right: -15px;
+	margin-top: -2px;
+	img { width: 100% }
 }
 
 .darkblue {
@@ -42,15 +59,16 @@ body {
 	border-color: #507ea2;
 	border-radius: 0px;
 	color: #dedede;
+	height: 40px !important;
 }
 
 .input-button {
 	float: right !important;
-	border-radius: 0px;
-	background-color: blue !important;
-	border-color: #232323 !important;
-	width: 300px;
-	height: 50px;
+	border-radius: 0px !important;
+	background-color: #507ea2 !important;
+	border: none !important;
+	width: 158px !important;
+	height: 50px !important;
 }
 
 .login-button {
@@ -59,6 +77,8 @@ body {
 }
 
 .dropdown-menu {
+	width: 100px; 
+	background-color: #232323 !important;
 	margin-top: 8px;
 	text-align: center;
 	color: #dedede;
@@ -80,6 +100,11 @@ body {
 
 .navbar-inverse a {
 	color: #dedede !important;
+ 	-webkit-transition: all 0.25s ease-out;
+ 	-moz-transition: all 0.25s ease-out;
+ 	-o-transition: all 0.25s ease-out;
+   	-ms-transition: all 0.25s ease-out;
+    	transition: all 0.25s ease-out;
 }
 
 .navbar-inverse a:hover {
@@ -120,7 +145,6 @@ body {
 	margin-top: 8px;
 	margin-left: 16px;
 	border: none !important;
-	background-image: none;
 	background-color: #66a6d7 !important;
 	background-repeat: no-repeat;
 	border-radius: 0px;
@@ -177,21 +201,21 @@ body {
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:	 #dedede;
+    color: #dedede;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    #dedede;
+   color: #dedede;
    opacity:  1;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    #dedede;
+   color: #dedede;
    opacity:  1;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    #dedede;
+   color: #dedede;
 }
 :placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
-  color:    #dedede;
+  color: #dedede;
 }
 
 .postbar-button:hover {
@@ -228,17 +252,10 @@ body {
 	margin-left: 0px !important;
 	width: 100% !important;
 	background-color: #232323;
-	max-height: 830px;
+	//max-height: 830px;
 	overflow: auto;
 }
 
-.avatar img {
-	float: left;
-	width: 85px;
-	height: 85px;
-	margin-top: -85px;
-	margin-left: 5px;
-}
 
 .threadbox {
 	min-height: 100px;
@@ -247,6 +264,20 @@ body {
 	background-color: #2e2d2d;
 	margin-bottom: 10px;
 	overflow: auto;
+ 	-webkit-transition: all 0.2s ease-out;
+ 	-moz-transition: all 0.2s ease-out;
+ 	-o-transition: all 0.2s ease-out;
+   	-ms-transition: all 0.2s ease-out;
+    	transition: all 0.2s ease-out;
+}
+
+.threadbox:hover {
+	background-color: #292929;
+	-webkit-transition: all 0.1s ease-in;
+ 	-moz-transition: all 0.1s ease-in;
+ 	-o-transition: all 0.1s ease-in;
+   	-ms-transition: all 0.1s ease-in;
+    	transition: all 0.1s ease-in;
 }
 
 .avatar {
@@ -295,6 +326,19 @@ kbd {
 	font-family: inherit !important;
 	font-style: normal !important;
 	color: #888888;
+	-webkit-transition: all 0.25s ease-out;
+ 	-moz-transition: all 0.25s ease-out;
+ 	-o-transition: all 0.25s ease-out;
+   	-ms-transition: all 0.25s ease-out;
+    	transition: all 0.25s ease-out;
+}
+
+input {
+	-webkit-transition: all 0.25s ease-out;
+ 	-moz-transition: all 0.25s ease-out;
+ 	-o-transition: all 0.25s ease-out;
+   	-ms-transition: all 0.25s ease-out;
+    	transition: all 0.25s ease-out;
 }
 
 input:hover {
@@ -324,6 +368,14 @@ button:hover {
  	transition: all 0.25s ease-in-out;
 }
 
+button {
+	-webkit-transition: all 0.25s ease-out;
+ 	-moz-transition: all 0.25s ease-out;
+ 	-o-transition: all 0.25s ease-out;
+   	-ms-transition: all 0.25s ease-out;
+    	transition: all 0.25s ease-out;
+}
+
 .links {
 	text-align: center;
 	padding-top: 2px;
@@ -334,6 +386,11 @@ button:hover {
 	padding-right: 20px;
 	color: #232323 !important;
 	text-decoration: none;
+	-webkit-transition: all 0.25s ease-out;
+ 	-moz-transition: all 0.25s ease-out;
+ 	-o-transition: all 0.25s ease-out;
+   	-ms-transition: all 0.25s ease-out;
+    	transition: all 0.25s ease-out;
 }
 
 .links a:hover {
@@ -386,7 +443,7 @@ button:hover {
 	margin-left: 0px !important;
 	background-color: #232323;
 	width: 1415px;
-	max-height: 830px;
+	//max-height: 830px;
 	overflow: auto;
 }
 
@@ -394,26 +451,51 @@ button:hover {
 	min-height: 300px;
 }
 
+.createback {
+	background-image:url('background.jpg');
+}
+
 .usertitlebar {
 	width: 90%;
 	margin-left: 5px;
 	padding-left: 5px;
 	margin-right: 5px;
+	margin-bottom: 5px;
 	float: right;
-	background-color: #ec5db8;
+	background-color: #232323;
 	height: 35px;
 }
 
-.postavatar {
+.titlebar-text {
+	float: right; 
+	margin-right: 10px; 
+	margin-left: 5px;
+	margin-top: 7px; 
+	height: 100%; 
+	text-decoration: none !important;
+}
+
+.userpost img {
 	width: 117px;
 	height: 117px;
+	float: left;
+	margin-left: -57px;
+	img { width: 100% }
+}
+
+.avatar img {
+	float: left;
+	width: 85px;
+	height: 85px;
+	margin-top: -85px;
+	margin-left: 5px;
+	img { width: 100% }
 }
 
 .postbody {
 	text-align: left;
 	width: 1368px;
 	word-wrap: break-word;
-	margin-top: -72px;
 	padding-left: 135px;
 	font-size: 15px;
 }
@@ -469,4 +551,24 @@ button:hover {
 	text-align: center;
 	color: #dedede;
 	text-decoration: none;
+}
+
+.postlinks a 
+{
+	color: #dedede !important;
+	-webkit-transition: all 0.25s ease-out;
+ 	-moz-transition: all 0.25s ease-out;
+ 	-o-transition: all 0.25s ease-out;
+   	-ms-transition: all 0.25s ease-out;
+    	transition: all 0.25s ease-out;
+}
+
+.postlinks a:hover
+{
+	color: #507ea2 !important;
+	-webkit-transition: all 0.25s ease-in;
+ 	-moz-transition: all 0.25s ease-in;
+ 	-o-transition: all 0.25s ease-in;
+   	-ms-transition: all 0.25s ease-in;
+    	transition: all 0.25s ease-in;
 }

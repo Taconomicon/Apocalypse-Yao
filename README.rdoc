@@ -1,28 +1,18 @@
-== README
+== README ==
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version: 2.3.0
+* Rails version: 4.2.6
 
-Things you may want to cover:
+* Requred Packages
 
-* Ruby version
+- Paperclip
+- Imagemagick
+- Devise
+- SimpleForum
 
-* System dependencies
+This is a web-forum created with Ruby on Rails. To run the server, simply clone the git, open the folder, and run: <code>rails s</code>
 
-* Configuration
+You may need to run the following to update the database to your local machine:
+<code>rake db:migrate</code>
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Additionally, you need to have Imagemagick and Paperclip installed to handle image file control.

@@ -2,4 +2,8 @@
 	= f.input :title, label: "Title", input_html: {class: 'titleinput'}
 	%br
 	= f.input :content, label: "Post Body", input_html: {class: 'inputpostbody'}
-	= f.submit input_html: {class: 'submitpost.input-button'}
+	= f.input :tags, label: "Tags", input_html: {class: 'titleinput'}
+	.wrapper{:style => "text-align: right; font-size: 12pt;"}
+		Tags are used to organize your thread and make it easier to find in a search. Use spaces to include multiple tags!
+	%br
+	= f.submit "Submit", class: "btn btn-primary"
