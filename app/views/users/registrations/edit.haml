@@ -120,7 +120,7 @@
   - if current_user.tbvisible then
     - titlebar_url += "background-image: url('" + current_user.titlebar.url(:bar) + "');"
 
-  - if current_user.tbcolor == "none"
+  - if current_user.bgcolor.nil? || current_user.tbcolor == "none"
     - titlebar_url += "background: none; "
   - else
     - titlebar_url += "background-color: #{current_user.tbcolor.tr(';','')};"
@@ -132,7 +132,8 @@
 
 
   - avatar_url= current_user.avatar.url(:thumb)
-  - text_color= current_user.txtcolor.tr(';','')
+  -if (!current_user.txtcolor.nil?)   
+    - text_color= current_user.txtcolor.tr(';','')
 
   .threadpostbox{:style => "margin-top: -10px;"}
     %h2{:style => "margin-top: 0px; margin-left: 10px;"}

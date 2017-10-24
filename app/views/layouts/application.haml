@@ -8,14 +8,14 @@
       %meta{:content => "key, words", :name => "keywords"}/
       %meta{:content => "description", :name => "description"}/
       %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
-      %link{:href => "main.css", :rel => "stylesheet", :type => "text/css"}/
+      / %link{:href => "main.css", :rel => "stylesheet", :type => "text/css"}/
       %link{:href => "rss.php", :rel => "alternate", :title => "Website Feed", :type => "application/rss+xml"}/
       %link{:href => "favicon.ico", :rel => "icon", :type => "image/x-icon"}/
       %title Coup d'Hackers
       = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
       = javascript_include_tag 'application', 'data-turbolinks-track' => true
       = csrf_meta_tags
-  %body{:style => "width: 100%;"}
+  %body
     / Navbar min-width: 1058px;
     %nav.navbar.navbar-inverse
       .container-fluid
@@ -34,18 +34,20 @@
               %a.navbar-brand{:href => "https://github.com/Taconomicon/Apocalypse-Yao"} Development
             %li
               %a.navbar-brand{:href => "/pages/about"} About
-          %ul.nav.navbar-nav.navbar-right
+          %ul.nav.navbar-nav.navbar-right{:style => "min-width: 15%;"}
 
             - if user_signed_in?
-              .btn-group{:style => "margin-left: 120px;"}
-                %li.dropdown.mega-dropdown-menu
-                  %button.btn.dropdown-toggle.login-button{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-                    %li.round-image-50= image_tag(current_user.avatar.url(:thumb))
-                  .dropdown-menu{:style => "margin-right: 20px; margin-top: 4px; margin-bottom: 7px; border-radius: 0px !important; background-color: #507ea2 !important;"}
-                    %form.form-signin{:style => "margin-top: 10px; margin-bottom: 10px; font-size: 20px; background-color: #507ea2;"}
-                      %a{:href => edit_user_registration_path, :style => "margin-bottom: 10px; text-decoration: none;"} Account
-                      %br
-                      %a{:href => destroy_user_session_path, :style => "font-size: 20px; text-decoration: none;"} Log Out
+              .div{:style => "text-align: right; font-size: 17pt;"}
+                #{current_user.name}
+                .btn-group
+                  %li.dropdown.mega-dropdown-menu
+                    %button.btn.dropdown-toggle.login-button{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                      %li.round-image-50= image_tag(current_user.avatar.url(:thumb))
+                    .dropdown-menu{:style => "margin-right: 20px; margin-top: 4px; margin-bottom: 7px; border-radius: 0px !important; background-color: #507ea2 !important;"}
+                      %form.form-signin{:style => "margin-top: 10px; margin-bottom: 10px; font-size: 20px; background-color: #507ea2;"}
+                        %a{:href => edit_user_registration_path, :style => "margin-bottom: 10px; text-decoration: none;"} Account
+                        %br
+                        %a{:href => destroy_user_session_path, :style => "font-size: 20px; text-decoration: none;"} Log Out
             - else
               %li
                 .wrapper{:style => "margin-top: 15px; margin-left: 10px; font-size: 14px;"}

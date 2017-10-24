@@ -69,10 +69,10 @@
   - string.gsub("[","<b>").gsub("]","</b>").gsub("\n\r","<br>").gsub("\r", "").gsub("\n", "<br>").gsub("{","<i>").gsub("}","</i>")
 
 
-.createtitle.lightblue{:style => "margin-left: 15px; margin-top: -10px;"}
+.createtitle.lightblue{:style => "margin-top: -10px;"}
 
   .navbar-header
-    .threadtoptext.threadtoppages{:style=>"z-index: 1;"}
+    .threadtoptext.threadtoppages{:style=>"width: 20%; text-align: left;"}
       .postlinks{:style => "margin-left: 5%;"}
         %b{:style => "font-size: 15pt;"} Pages:
         - if page > 0
@@ -94,7 +94,7 @@
             %a{:href => path[1] + "/?page=#{page+2}"}
               %span.glyphicon.glyphicon-chevron-right
     .nav-special.threadtoptext
-      .threadtitletext{:style => "text-align: center; margin-left: 30%; margin-right: 35%; font-size: 18pt; font-weight: bold; margin-top: -6px;"}
+      .threadtitletext{:style => "text-align: center; margin-left: 30%; margin-right: 30%; font-size: 18pt; font-weight: bold; margin-top: -6px;"}
         = @post.title
       .threadpostbox
         - if page == 0
