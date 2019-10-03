@@ -22,9 +22,8 @@ and see what a couple more years of school, and a few out in the real world, hav
 
 # Deployment
 
-This is a Rails web-forum that allows user-customized posts. To run the server, simply clone and run: <code>rails s</code>
+This is a Rails web-forum that allows user-customized posts. To run the server, simply clone and run: `rails s`
 
-You may need to run the following to update the database to your local machine:
-<code>rake db:migrate</code>
+You may need to run the following to update the database to your local machine: `rake db:migrate`
 
 Additionally, you need to have Imagemagick and Paperclip installed to handle image file control.
