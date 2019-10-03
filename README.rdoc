@@ -1,16 +1,28 @@
-== README ==
+# Apocalypse-Yao
 
-* Ruby version: 2.3.0
-* Rails version: 4.2.6
+Hi! If you're looking here, please don't take it's current state (as of 10/19) as my best work. This was my first shot at building
+a web-app. That's... why it looks the way it does.
 
-* Requred Packages
+But it was an interesting concept, and now I know a lot more about how to do all this! If only Rails was still being used :(
+
+Still, I'm going to bring out a broom and do some Fall cleaning (is that a thing? There's Spring cleaning...),
+and see what a couple more years of school, and a few out in the real world, have brought to the table.
+
+# Versions
+
+* Ruby version: 2.6.5
+* Rails version: 5.0.0
+
+# Requred Packages
 
 - Paperclip
 - Imagemagick
 - Devise
 - SimpleForum
 
-This is a web-forum created with Ruby on Rails. To run the server, simply clone the git, open the folder, and run: <code>rails s</code>
+# Deployment
+
+This is a Rails web-forum that allows user-customized posts. To run the server, simply clone and run: <code>rails s</code>
 
 You may need to run the following to update the database to your local machine:
 <code>rake db:migrate</code>

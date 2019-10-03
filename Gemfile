@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.4'
+gem 'rails', '5.0.0'
 gem 'sqlite3'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -10,8 +10,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml', '~> 4.0', '>= 4.0.7'
-gem 'simple_form', '~> 3.2', '>= 3.2.1'
-gem 'devise', '~> 3.5', '>= 3.5.6'
+gem "simple_form", ">= 5.0.0"
+gem "devise", ">= 4.7.1"
 gem 'simple_token_authentication', '~> 1.0'
 gem 'paperclip', '~> 4.1'
 
