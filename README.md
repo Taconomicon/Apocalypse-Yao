@@ -1,12 +1,12 @@
 # Apocalypse-Yao
 
-Hi! If you're looking here, please don't take it's current state (as of 10/19) as my best work. This was my first shot at building
-a web-app. That's... why it looks the way it does.
+Hi! If you're looking at this, please don't take it's current state as my best work. This was my first shot at building
+a web app.
+That's... why it looks the way it does.
 
-But it was an interesting concept, and now I know a lot more about how to do all this! If only Rails was still being used :(
+This project was an attempt to provide a web forum that maximizes user expression, by allowing almost all visual content within each user's posts to be customized. It was an interesting concept, and now I know a lot more about how to do all this!
 
-Still, I'm going to bring out a broom and do some Fall cleaning (is that a thing? There's Spring cleaning...),
-and see what a couple more years of school, and a few out in the real world, have brought to the table.
+If you'd like to see what a couple more years of school, and a few out in the real world, have brought to the table, head over to the reimagined version: [Coup](https://github.com/Taconomicon/Coup)
 
 # Versions
 
